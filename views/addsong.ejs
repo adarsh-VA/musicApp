@@ -1,0 +1,85 @@
+<% layout('boilerplate') %> 
+
+<script src="/js/multiselect.js"></script>
+
+<div class="container">
+  <h1 class="text-center">Add Song</h1>
+  <hr>
+  <form action="/add-song" method="post" style="max-width: 30rem;" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="songname" class="form-label">Song Name</label>
+        <input type="text" class="form-control" id="songname" name="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="dor" class="form-label">Date Released</label>
+        <input type="date" class="form-control" id="dor" name="dor" required>
+      </div>
+      <div class="mb-3">
+          <label for="img" class="form-label">Artwork</label>
+          <input type="file" class="form-control" id="img" name="image" required>
+      </div>
+      <div class="mb-3">
+          <label for="artists" class="form-label">Artists</label><br>
+          <div class="row g-2">
+              <div class="col-auto">
+                  <select style="width: 20rem;" multiple multiselect-search="true" multiselect-max-items="3" id="artists" name="artists[]" required>
+                      <% for(let artist of artists){ %>
+                        <option value="<%= artist._id %>"><%= artist.name %></option> 
+                      <% } %> 
+                  </select>
+              </div>
+              <div class="col-auto">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Artist</button>
+              </div>
+          </div>
+      </div>
+      <div class="row g-2">
+          <div class="col-auto">
+              <a type="button" class="btn btn-danger" href="/">Cancel</a>
+          </div>
+          <div class="col-auto">
+              <button type="submit" class="btn btn-primary">Add</button>
+          </div>
+      </div> 
+  </form>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Artist</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/add-artist" method="post" enctype="multipart/form-data">
+              <div class="mb-3">
+                <label for="artistname" class="form-label">Artist Name</label>
+                <input type="text" class="form-control" id="artistname"  name="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="dob" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="dob" name="dob" required>
+              </div>
+              <div class="mb-3">
+                  <label for="img" class="form-label">Picture</label>
+                  <input type="file" class="form-control" id="img" name="image" required>
+              </div>
+              <div class="mb-3">
+                  <label for="bio" class="form-label">Bio</label>
+                  <textarea class="form-control" id="bio" name="bio" rows="3"></textarea>
+                </div>
+              <div class="row g-2">
+                  <div class="col-auto">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                  </div>
+                  <div class="col-auto">
+                      <button type="submit" class="btn btn-primary">Add</button>
+                  </div>
+              </div> 
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

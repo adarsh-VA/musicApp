@@ -1,0 +1,32 @@
+<% layout('./boilerplate') %> 
+
+<div class="container">
+    <h1 class="text-center">All Artists</h1>
+    <hr>
+    <div class="row">
+        <% for(let artist of artists){ %> 
+        <div class="col-6">
+            <div class="card mb-3 mx-auto" style="max-width: 700px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="/images/<%=artist.image %>" style="height: 200px; width: auto;" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= artist.name %></h5>
+                      <p class="card-text"><b>Bio: </b><%= artist.bio %> </p>
+                      <p class="card-text"><b>Dob: </b><%= artist.dob.getFullYear()+'-'+(artist.dob.getMonth()+1)+'-'+artist.dob.getDay() %></p>
+                        <p class="card-text"><b>Songs: </b>
+                            <% for(let s of artist.songs){%>
+                                <%= s.name %>
+                            <% } %>   
+                            </p>
+                      <p class="card-text"><b>Rating: </b><%= artist.avgrating %> </p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <% } %> 
+    </div>
+</div>

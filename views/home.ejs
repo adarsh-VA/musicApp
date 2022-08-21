@@ -1,0 +1,101 @@
+<% layout('boilerplate') %>
+
+<link rel="stylesheet" href="/css/star.css"> 
+
+<div class="container" id="songs">
+  <div class="pt-3 d-flex justify-content-between">
+      <h3>Top 10 Songs</h3>
+      <a type="button" class="btn btn-success text-light"  href="/add-song">Add Song</a>
+  </div>
+  <hr>
+  <% for(let s of songs){ %> 
+  <div class="card mb-3 mx-auto" style="max-width: 700px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="/images/<%= s.image %>" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-4">
+          <div class="card-body">
+            <h5 class="card-title"><%= s.name %></h5>
+            <p class="card-text"><b>Artists: </b>
+              <% if(s.artists.length>1) {%>
+                <% s.artists.forEach((a,i)=>{%>
+                     
+                    <% if(i==0){%>
+                        <%= a.name %> 
+                    <% }else{ %> 
+                        , <%= a.name %>
+                    <% } %> 
+                    
+                <% }) %>  
+                <% }else{ %>  
+                    <%= s.artists[0].name %> 
+                <% } %> 
+                </p>
+            </p>
+            <p class="card-text"><b>Rating: </b><%= s.avgrating %> (by <%= s.ratings.length %> people)</p>
+            <p class="card-text"><small class="text-muted">Released : <%= s.dor.getFullYear()+'-'+(s.dor.getMonth()+1)+'-'+s.dor.getDay() %></small></small></p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card-body">
+            <h5 class="card-title">Rate here</h5>
+            <form action="/rating/<%= s._id %>/home" id="starform<%= s._id %>" method="post">
+              <fieldset class="starability-basic" onchange="document.getElementById('starform<%= s._id %>').submit(); return false;">
+                <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+                <input type="radio" id="<%= s._id %>1" name="rating" value="1" />
+                <label for="<%= s._id %>1" title="Terrible">1 star</label>
+                <input type="radio" id="<%= s._id %>2" name="rating" value="2" />
+                <label for="<%= s._id %>2" title="Not good">2 stars</label>
+                <input type="radio" id="<%= s._id %>3" name="rating" value="3" />
+                <label for="<%= s._id %>3" title="Average">3 stars</label>
+                <input type="radio" id="<%= s._id %>4" name="rating" value="4" />
+                <label for="<%= s._id %>4" title="Very good">4 stars</label>
+                <input type="radio" id="<%= s._id %>5" name="rating" value="5" />
+                <label for="<%= s._id %>5" title="Amazing">5 stars</label>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+  </div>
+  <% } %> 
+</div>
+    <br><br>
+
+<div class="container" id="songs">
+  <h3>Top 10 Artists</h3>
+  <hr>
+  <% for(let a of artists){ %> 
+  <div class="card mb-3 mx-auto" style="max-width: 700px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="/images/<%= a.image %>" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= a.name %></h5>
+            <p class="card-text"><b>Dob: </b><%= a.dob.getFullYear()+'-'+(a.dob.getMonth()+1)+'-'+a.dob.getDay() %></p>
+            <p class="card-text"><b>Songs: </b>
+              <% if(a.songs.length>1) {%>
+                <% a.songs.forEach((s,i)=>{%>
+                     
+                    <% if(i==0){%>
+                        <%= s.name %> 
+                    <% }else{ %> 
+                        , <%= s.name %>
+                    <% } %> 
+                    
+                <% }) %>  
+                <% }else if(a.songs.length==1){ %>  
+                    <%= a.songs[0].name %> 
+                <% } %> 
+                </p>
+            </p>
+            <p class="card-text"><b>Rating: </b><%= a.avgrating %> (for <%= a.songs.length %> songs)</p>
+          </div>
+        </div>
+      </div>
+  </div>
+ <% } %> 
+</div>
