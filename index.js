@@ -49,32 +49,32 @@ mongoose.connect(db)
 app.get('/home',async(req,res)=>{
     const songs = await songm.find().sort({avgrating:-1}).limit(10).populate('artists');
     const artists = await artistm.find().sort({avgrating:-1}).limit(10).populate('songs');
-    res.render('home',{songs,artists});
+    res.render('home',{songs,artists,tl:'Home'});
 })
 
 app.get('/login',(req,res)=>{
-    res.render('login');
+    res.render('login',{tl:'Login'});
 })
 
 app.get('/register',(req,res)=>{
-    res.render('register')
+    res.render('register',{tl:'Register'})
 })
 
 app.get('/add-song',async(req,res)=>{
     const artists = await artistm.find({});
-    res.render('addsong',{artists});
+    res.render('addsong',{artists,tl:'Add Song'});
 })
 
 app.get('/allartists',(req,res)=>{
     artistm.find().sort({name:1}).populate('songs')
     .then( (artists) =>{
-        res.render('allartists',{artists});
+        res.render('allartists',{artists,tl:'All Artists'});
     });
 })
 
 app.get('/allsongs',async(req,res)=>{
     const songs = await songm.find({}).populate('artists');
-    res.render('allsongs',{songs});
+    res.render('allsongs',{songs,tl:'All Songs'});
 })
 
 app.post('/add-song',upload.single('image'),async(req,res)=>{
@@ -134,7 +134,8 @@ app.delete('/allsongs/:id',async(req,res)=>{
         const artist = await artistm.findById(a._id);
         var avg =0;
         var l=1;
-        artist.songs.pop({_id:id});
+        console.log(artist.songs);
+        artist.songs.pull({_id:id});
         artist.sum=parseFloat(artist.sum-rating).toFixed(1);
         if(artist.songs.length!=0){
             l=artist.songs.length;

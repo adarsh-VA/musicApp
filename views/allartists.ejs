@@ -16,11 +16,21 @@
                       <h5 class="card-title"><%= artist.name %></h5>
                       <p class="card-text"><b>Bio: </b><%= artist.bio %> </p>
                       <p class="card-text"><b>Dob: </b><%= artist.dob.getFullYear()+'-'+(artist.dob.getMonth()+1)+'-'+artist.dob.getDay() %></p>
-                        <p class="card-text"><b>Songs: </b>
-                            <% for(let s of artist.songs){%>
-                                <%= s.name %>
-                            <% } %>   
-                            </p>
+                      <p class="card-text"><b>Songs: </b>
+                        <% if(artist.songs.length>1) {%>
+                        <% artist.songs.forEach((s,i)=>{%>
+                             
+                            <% if(i==0){%>
+                                <%= s.name %> 
+                            <% }else{ %> 
+                                , <%= s.name %>
+                            <% } %> 
+                            
+                        <% }) %>  
+                        <% }else if(artist.songs.length==1){ %>  
+                            <%= artist.songs[0].name %> 
+                        <% } %> 
+                        </p>
                       <p class="card-text"><b>Rating: </b><%= artist.avgrating %> </p>
                     </div>
                   </div>
