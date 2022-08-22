@@ -24,29 +24,6 @@ router.get('/allsongs',async(req,res)=>{
     res.render('allsongs',{songs,tl:'All Songs'});
 })
 
-router.post('/rating/:id/:p',isLoggedIn,async(req,res)=>{
-    // song rating update
-    const {id,p} = req.params;
-    var r = parseInt(req.body.rating); 
-    const s = await songm.findById(id);
-    const oldrating = s.avgrating;
-    s.ratings.push({rating:r});
-    s.sum=s.sum+r;
-    s.avgrating = parseFloat(s.sum/s.ratings.length).toFixed(1);
-    const newrating = s.avgrating;
-    await s.save();
-
-    // artist rating update
-    for(let a of s.artists){    
-        const artist = await artistm.findById(a._id);
-        var diff = newrating-oldrating;
-        artist.sum = parseFloat(artist.sum+diff).toFixed(1);
-        artist.avgrating = parseFloat(artist.sum/artist.songs.length).toFixed(1);
-        artist.save();
-    }
-    res.redirect(`/${p}`);
-})
-
 router.delete('/allsongs/:id',isLoggedIn,async(req,res)=>{
     const {id} = req.params;
     const s = await songm.findById(id);

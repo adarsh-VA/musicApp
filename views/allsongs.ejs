@@ -38,7 +38,7 @@
                             <p class="card-text">Rate here :</p>
                         </div>
                         <div class="col">
-                            <form action="/rating/<%= s._id %>/allsongs" id="starform<%= s._id %>" method="post">
+                            <form action="/adding/rating/<%= s._id %>/allsongs" id="starform<%= s._id %>" method="post">
                               <fieldset class="starability-basic" onchange="document.getElementById('starform<%= s._id %>').submit(); return false;">
                                 <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
                                 <input type="radio" id="<%= s._id %>1" name="rating" value="1" />
