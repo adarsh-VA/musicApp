@@ -34,9 +34,13 @@ router.post('/add-song',upload.single('image'),async(req,res)=>{
 
 router.post('/add-artist',upload.single('image'),async(req,res)=>{
     const {name,dob,bio} = req.body;
-    const a = new artistm({name,dob,bio,image:req.file.filename});
+    var img ='';
+    if(req.file){
+        img = req.file.filename;
+    }
+    const a = new artistm({name,dob,bio,image:img});
     await a.save();
-    res.redirect('/add-song');
+    res.redirect('/adding/add-song');
 })
 
 router.post('/rating/:id/:p',isLoggedIn,async(req,res)=>{
