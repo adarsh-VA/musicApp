@@ -1,12 +1,14 @@
 <% layout('boilerplate') %> 
 
 <div class="container">
+  <!-- Eror notifications -->
     <% if(error!=''){ %> 
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
       <%= error %> 
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <% } %> 
+    
     <h1 class="text-center">Login Page</h1>
     <hr>
     <div class="card mx-auto" style="width: 30rem;">

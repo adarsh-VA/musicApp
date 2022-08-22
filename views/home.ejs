@@ -21,11 +21,13 @@
     </div>
   <% } %> 
 
+  <!-- Top 10 Songs -->
   <div class="pt-3 d-flex justify-content-between">
       <h3>Top 10 Songs</h3>
       <a type="button" class="btn btn-success text-light"  href="/adding/add-song">Add Song</a>
   </div>
   <hr>
+  <% if(songs.length>0){ %> 
   <% for(let s of songs){ %> 
   <div class="card mb-3 mx-auto" style="max-width: 800px;">
       <div class="row g-0">
@@ -35,6 +37,8 @@
         <div class="col-md-4">
           <div class="card-body">
             <h5 class="card-title"><%= s.name %></h5>
+
+            <!-- displaying all artists of each song -->
             <p class="card-text"><b>Artists: </b>
               <% if(s.artists.length>1) {%>
                 <% s.artists.forEach((a,i)=>{%>
@@ -49,14 +53,15 @@
                 <% }else{ %>  
                     <%= s.artists[0].name %> 
                 <% } %> 
-                </p>
             </p>
+
             <p class="card-text"><b>Rating: </b><%= s.avgrating %> (by <%= s.ratings.length %> people)</p>
             <p class="card-text"><small class="text-muted">Released : <%= s.dor.getFullYear()+'-'+(s.dor.getMonth()+1)+'-'+s.dor.getDay() %></small></small></p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card-body">
+            <!-- rating and reset rating -->
             <% var flag = true %> 
             <% if(currentuser) {%> 
             <% for(let r of s.ratings){ %>
@@ -97,26 +102,33 @@
               </form>
             <% } %> 
           </div>
+
         </div>
       </div>
   </div>
   <% } %> 
+  <% }else{ %>
+    <h1>No Songs to Display</h1>
+  <% } %> 
 </div>
     <br><br>
 
-<div class="container" id="songs">
+<!-- top 10 artists -->
+<div class="container" id="artists">
   <h3>Top 10 Artists</h3>
   <hr>
   <% for(let a of artists){ %> 
   <div class="card mb-3 mx-auto" style="max-width: 700px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="/images/<%= a.image %>" class="img-fluid rounded-start" alt="...">
+          <img src="/images/<%= a.image %>" class="img-fluid rounded-start" alt="..." onerror=this.src="images/dummy.jpg">
         </div>
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title"><%= a.name %></h5>
             <p class="card-text"><b>Dob: </b><%= a.dob.getFullYear()+'-'+(a.dob.getMonth()+1)+'-'+a.dob.getDay() %></p>
+            
+            <!-- displaying all songs of each artist -->
             <p class="card-text"><b>Songs: </b>
               <% if(a.songs.length>1) {%>
                 <% a.songs.forEach((s,i)=>{%>
@@ -131,7 +143,6 @@
                 <% }else if(a.songs.length==1){ %>  
                     <%= a.songs[0].name %> 
                 <% } %> 
-                </p>
             </p>
             <p class="card-text"><b>Rating: </b><%= a.avgrating %> (for <%= a.songs.length %> songs)</p>
           </div>

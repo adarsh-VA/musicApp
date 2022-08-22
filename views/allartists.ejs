@@ -9,13 +9,14 @@
             <div class="card mb-3 mx-auto" style="max-width: 700px;">
                 <div class="row g-0">
                   <div class="col-md-4">
-                    <img src="/images/<%=artist.image %>" style="height: 200px; width: auto;" class="img-fluid rounded-start" alt="...">
+                    <img src="/images/<%=artist.image %>" style="height: 200px; width: auto;" class="img-fluid rounded-start" alt="..." onerror=this.src="images/dummy.jpg">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
                       <h5 class="card-title"><%= artist.name %></h5>
                       <p class="card-text"><b>Bio: </b><%= artist.bio %> </p>
                       <p class="card-text"><b>Dob: </b><%= artist.dob.getFullYear()+'-'+(artist.dob.getMonth()+1)+'-'+artist.dob.getDay() %></p>
+                      <!-- for printing all songs of the artist -->
                       <p class="card-text"><b>Songs: </b>
                         <% if(artist.songs.length>1) {%>
                         <% artist.songs.forEach((s,i)=>{%>

@@ -5,9 +5,11 @@
 <div class="container">
   <h1 class="text-center">Add Song</h1>
   <hr>
+  <!-- alert -->
   <div class="alert alert-warning" role="alert">
     Please Fill Artists Field first, Or Add your Artist First to Avoid form data loss!
   </div>
+  <!-- song form -->
   <form action="/adding/add-song" method="post" style="max-width: 30rem;" enctype="multipart/form-data">
       <div class="mb-3">
         <label for="songname" class="form-label">Song Name</label>
@@ -46,7 +48,7 @@
       </div> 
   </form>
   
-  <!-- Modal -->
+  <!-- Modal (artist form) -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -66,7 +68,7 @@
               </div>
               <div class="mb-3">
                   <label for="img" class="form-label">Picture</label>
-                  <input type="file" class="form-control" id="img" name="image" required>
+                  <input type="file" class="form-control" id="img" name="image">
               </div>
               <div class="mb-3">
                   <label for="bio" class="form-label">Bio</label>

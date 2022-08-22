@@ -66,6 +66,7 @@ app.use('/',display);
 // user routes
 app.use('/user',auth);
 
+// Error page
 app.all('*',(req,res)=>{
     res.render('error',{tl:"Error"});
 })

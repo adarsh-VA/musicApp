@@ -5,6 +5,7 @@
 <div class="container">
     <h1 class="text-center">All Songs</h1>
     <hr>
+    <% if(songs.length>0){ %> 
     <div class="row">
         <% for(let s of songs){ %> 
         <div class="col-6">
@@ -16,6 +17,8 @@
                   <div class="col-md-7">
                     <div class="card-body">
                       <h5 class="card-title"><%=s.name %></h5>
+
+                      <!-- For printing all artists of the song -->
                       <p class="card-text"><b>Artists: </b>
                         <% if(s.artists.length>1) {%>
                         <% s.artists.forEach((a,i)=>{%>
@@ -33,6 +36,8 @@
                         </p>
                       <p class="card-text"><b>Rating </b><%= s.avgrating %> (by <%= s.ratings.length %> people)</p> 
                       <p class="card-text"><small class="text-muted">Released : <%= s.dor.getFullYear()+'-'+(s.dor.getMonth()+1)+'-'+s.dor.getDay() %></small></p>
+
+                      <!-- rating and reset rating -->
                       <div class="row">
                         <% var flag = true %> 
                         <% if(currentuser) {%> 
@@ -76,6 +81,7 @@
                         </div>
                         <% } %> 
                       </div>
+                      
                     </div>
                   </div>
                   <div class="col-md-1">
@@ -93,4 +99,7 @@
         </div>
         <% } %> 
     </div>
+    <% }else{ %>
+      <h1>No Songs to Display</h1>
+    <% } %> 
 </div>

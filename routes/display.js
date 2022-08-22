@@ -46,7 +46,6 @@ router.delete('/allsongs/:id',isLoggedIn,async(req,res)=>{
     }
 
     await s.delete();
-    await songm.findByIdAndDelete(id);
     res.redirect('/allsongs')
 })
 
