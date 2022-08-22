@@ -19,6 +19,7 @@ async function create (){
         const a = new artistm({name,dob,bio,image:img});
         await a.save();
     }
+    console.log('completed');
 }
 
 create();

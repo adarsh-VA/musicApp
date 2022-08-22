@@ -62,7 +62,7 @@ router.post('/rating/:id/:p',isLoggedIn,async(req,res)=>{
         var diff = newrating-oldrating;
         artist.sum = parseFloat(artist.sum+diff).toFixed(1);
         artist.avgrating = parseFloat(artist.sum/artist.songs.length).toFixed(1);
-        artist.save();
+        await artist.save();
     }
     res.redirect(`/${p}`);
 })
@@ -73,8 +73,12 @@ router.patch('/reset/:sid/:rid/:rt/:p',isLoggedIn,async(req,res)=>{
     const s = await songm.findById(sid);
     const oldrating = s.avgrating;
     s.ratings.pull({_id:rid});
+    var l=s.ratings.length;
+    if(l==0){
+        l=1;
+    }
     s.sum=s.sum-rt;
-    s.avgrating = parseFloat(s.sum/s.ratings.length).toFixed(1);
+    s.avgrating = parseFloat(s.sum/l).toFixed(1);
     const newrating = s.avgrating;
     await s.save();
 
@@ -83,8 +87,12 @@ router.patch('/reset/:sid/:rid/:rt/:p',isLoggedIn,async(req,res)=>{
         const artist = await artistm.findById(a._id);
         var diff = newrating-oldrating;
         artist.sum = parseFloat(artist.sum+diff).toFixed(1);
-        artist.avgrating = parseFloat(artist.sum/artist.songs.length).toFixed(1);
-        artist.save();
+        var ll=artist.songs.length;
+        if(ll==0){
+            ll=1;
+        }
+        artist.avgrating = parseFloat(artist.sum/ll).toFixed(1);
+        await artist.save();
     }
     res.redirect(`/${p}`);
 })

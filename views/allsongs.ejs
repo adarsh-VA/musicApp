@@ -51,8 +51,8 @@
                               <p class="starability-result" data-rating=<%= r.rating %>></p>
                             </div>
                             <div class="col-md-1">
-                              <form action="/adding/reset/<%= s._id %>/<%= r._id %>/<%=r.rating %>/allsongs/?_method=PATCH"  method="post" id="delform<%= s._id %>">
-                                  <a href="javascript:{}" style="text-decoration: none; color:red;" title="Reset" onclick="document.getElementById('delform<%= s._id %>').submit(); return false;">&#8635</a>
+                              <form action="/adding/reset/<%= s._id %>/<%= r._id %>/<%=r.rating %>/allsongs/?_method=PATCH"  method="post" id="resetform<%= s._id %>">
+                                  <a href="javascript:{}" style="text-decoration: none; color:red;" title="Reset" onclick="document.getElementById('resetform<%= s._id %>').submit(); return false;">&#8635</a>
                               </form>
                             </div>
                           <% }%>

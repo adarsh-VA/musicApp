@@ -16,9 +16,10 @@ async function create (){
         var email = `user${i}@${i}`;
         var username = `user${i}`;
         var password = '123';
-        const user = await new userm({email,username});
+        const user = new userm({email,username});
         const ruser = await userm.register(user,password);
     }
+    console.log('completed');
 }
     
 create();
