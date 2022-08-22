@@ -13,9 +13,15 @@
         </ul>
         <a class="navbar-brand mx-auto text-success" href="/user/home">Dotify</a>
         <ul class="navbar-nav">
+          <% if(!currentuser){ %> 
             <li class="nav-item active">
                 <a class="nav-link text-success" href="/user/login">Login/Sign Up!</a>
             </li>
+            <% }else{ %> 
+            <li class="nav-item active">
+              <a class="nav-link text-success" href="/user/logout">Log Out!</a>
+            </li>
+            <% } %> 
         </ul>
     </div>
   </nav>

@@ -4,6 +4,7 @@ const artistm = require('../models/artistm');
 const songm = require('../models/songm');
 const path = require('path');
 const fs = require('fs');
+const {isLoggedIn} = require('../middlewares');
 
 router.get('/home',async(req,res)=>{
     const songs = await songm.find().sort({avgrating:-1}).limit(10).populate('artists');
@@ -23,7 +24,7 @@ router.get('/allsongs',async(req,res)=>{
     res.render('allsongs',{songs,tl:'All Songs'});
 })
 
-router.post('/rating/:id/:p',async(req,res)=>{
+router.post('/rating/:id/:p',isLoggedIn,async(req,res)=>{
     // song rating update
     const {id,p} = req.params;
     var r = parseInt(req.body.rating); 
@@ -46,7 +47,7 @@ router.post('/rating/:id/:p',async(req,res)=>{
     res.redirect(`/${p}`);
 })
 
-router.delete('/allsongs/:id',async(req,res)=>{
+router.delete('/allsongs/:id',isLoggedIn,async(req,res)=>{
     const {id} = req.params;
     const s = await songm.findById(id);
     const rating = s.avgrating;

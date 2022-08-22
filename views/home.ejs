@@ -3,6 +3,10 @@
 <link rel="stylesheet" href="/css/star.css"> 
 
 <div class="container" id="songs">
+  <% if(currentuser){ %> 
+  <h5 class="text-end">Welcome <%=currentuser.username %> </h5>
+  <% } %> 
+
   <!-- handling notifications -->
   <% if(success!=''){ %> 
   <div class="alert alert-success alert-dismissible fade show" role="alert">
