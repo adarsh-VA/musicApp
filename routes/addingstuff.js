@@ -40,6 +40,7 @@ router.post('/add-artist',upload.single('image'),async(req,res)=>{
     }
     const a = new artistm({name,dob,bio,image:img});
     await a.save();
+    req.flash('success','successfully added Artist');
     res.redirect('/adding/add-song');
 })
 
