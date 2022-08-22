@@ -8,7 +8,7 @@
     <div class="row">
         <% for(let s of songs){ %> 
         <div class="col-6">
-            <div class="card mb-3 mx-auto" style="max-width: 700px;">
+            <div class="card mb-3 mx-auto" style="max-width: 800px;">
                 <div class="row g-0">
                   <div class="col-md-4">
                     <img src="/images/<%= s.image %>" class="img-fluid rounded-start" alt="...">
@@ -34,10 +34,30 @@
                       <p class="card-text"><b>Rating </b><%= s.avgrating %> (by <%= s.ratings.length %> people)</p> 
                       <p class="card-text"><small class="text-muted">Released : <%= s.dor.getFullYear()+'-'+(s.dor.getMonth()+1)+'-'+s.dor.getDay() %></small></p>
                       <div class="row">
+                        <% var flag = true %> 
+                        <% if(currentuser) {%> 
+                        <% for(let r of s.ratings){ %>
+                          <% if(r.author == currentuser._id){ %>
+                            <% flag=false %> 
+                            <div class="col-md-5">
+                              <p class="card-text">Your have Rated:</p>
+                            </div>
+                            <div class="col">
+                              <p class="starability-result" data-rating=<%= r.rating %>></p>
+                            </div>
+                            <div class="col-md-1">
+                              <form action="/adding/reset/<%= s._id %>/<%= r._id %>/<%=r.rating %>/allsongs/?_method=PATCH"  method="post" id="delform<%= s._id %>">
+                                  <a href="javascript:{}" style="text-decoration: none; color:red;" title="Reset" onclick="document.getElementById('delform<%= s._id %>').submit(); return false;">&#8635</a>
+                              </form>
+                            </div>
+                          <% }%>
+                        <% } %> 
+                        <% } %> 
+                        <% if(flag) {%> 
                         <div class="col">
-                            <p class="card-text">Rate here :</p>
+                          <p class="card-text">Rate here :</p>
                         </div>
-                        <div class="col">
+                        <div class="col"> 
                             <form action="/adding/rating/<%= s._id %>/allsongs" id="starform<%= s._id %>" method="post">
                               <fieldset class="starability-basic" onchange="document.getElementById('starform<%= s._id %>').submit(); return false;">
                                 <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
@@ -54,16 +74,19 @@
                               </fieldset>
                             </form>
                         </div>
+                        <% } %> 
                       </div>
                     </div>
                   </div>
                   <div class="col-md-1">
+                    <% if(currentuser && s.author==currentuser._id){ %> 
                     <form action="/allsongs/<%= s._id %>/?_method=DELETE"  method="post" id="delform<%= s._id %>">
                         <a href="javascript:{}" onclick="document.getElementById('delform<%= s._id %>').submit(); return false;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash" viewBox="0 0 16 16">
                           <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                           <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                         </svg></a>
                     </form>
+                    <% } %> 
                   </div>
                 </div>
             </div>

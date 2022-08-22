@@ -16,15 +16,16 @@ const songschema = new mongoose.Schema({
         type:Number,
         default:0
     },
+    author:{
+        type: String,
+        default:''
+    },
     ratings:[{
         rating:{
             type:Number,
             min:0
         },
-        author:{
-            type: mongoose.Schema.Types.ObjectId,
-            ref:'users'
-        }
+        author:String
     }]
 })
 

@@ -27,7 +27,7 @@
   </div>
   <hr>
   <% for(let s of songs){ %> 
-  <div class="card mb-3 mx-auto" style="max-width: 700px;">
+  <div class="card mb-3 mx-auto" style="max-width: 800px;">
       <div class="row g-0">
         <div class="col-md-4">
           <img src="/images/<%= s.image %>" class="img-fluid rounded-start" alt="...">
@@ -57,22 +57,45 @@
         </div>
         <div class="col-md-4">
           <div class="card-body">
-            <h5 class="card-title">Rate here</h5>
-            <form action="/adding/rating/<%= s._id %>/home" id="starform<%= s._id %>" method="post">
-              <fieldset class="starability-basic" onchange="document.getElementById('starform<%= s._id %>').submit(); return false;">
-                <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
-                <input type="radio" id="<%= s._id %>1" name="rating" value="1" />
-                <label for="<%= s._id %>1" title="Terrible">1 star</label>
-                <input type="radio" id="<%= s._id %>2" name="rating" value="2" />
-                <label for="<%= s._id %>2" title="Not good">2 stars</label>
-                <input type="radio" id="<%= s._id %>3" name="rating" value="3" />
-                <label for="<%= s._id %>3" title="Average">3 stars</label>
-                <input type="radio" id="<%= s._id %>4" name="rating" value="4" />
-                <label for="<%= s._id %>4" title="Very good">4 stars</label>
-                <input type="radio" id="<%= s._id %>5" name="rating" value="5" />
-                <label for="<%= s._id %>5" title="Amazing">5 stars</label>
-              </fieldset>
-            </form>
+            <% var flag = true %> 
+            <% if(currentuser) {%> 
+            <% for(let r of s.ratings){ %>
+              <% if(r.author == currentuser._id){ %>
+                <% flag=false %> 
+                <div class="row">
+                  <div class="col-md-8">
+                    <h5 class="card-title">You have Rated:</h5>
+                  </div>
+                  <div class="col"> 
+                      <form action="/adding/reset/<%= s._id %>/<%= r._id %>/<%= r.rating %>/home/?_method=PATCH"  method="post" id="delform<%= s._id %>">
+                          <a href="javascript:{}" style="text-decoration: none; color:red;" title="Reset" onclick="document.getElementById('delform<%= s._id %>').submit(); return false;">&#8635</a>
+                      </form>
+                  </div>
+                </div>
+                <p class="starability-result" data-rating=<%= r.rating %>></p>
+                <% break %> 
+              <% }%>
+            <% } %> 
+            <% } %> 
+            <% if(flag) {%> 
+              <div class="row"></div>
+              <h5 class="card-title">Rate here</h5>
+              <form action="/adding/rating/<%= s._id %>/home" id="starform<%= s._id %>" method="post">
+                <fieldset class="starability-basic" onchange="document.getElementById('starform<%= s._id %>').submit(); return false;">
+                  <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+                  <input type="radio" id="<%= s._id %>1" name="rating" value="1" />
+                  <label for="<%= s._id %>1" title="Terrible">1 star</label>
+                  <input type="radio" id="<%= s._id %>2" name="rating" value="2" />
+                  <label for="<%= s._id %>2" title="Not good">2 stars</label>
+                  <input type="radio" id="<%= s._id %>3" name="rating" value="3" />
+                  <label for="<%= s._id %>3" title="Average">3 stars</label>
+                  <input type="radio" id="<%= s._id %>4" name="rating" value="4" />
+                  <label for="<%= s._id %>4" title="Very good">4 stars</label>
+                  <input type="radio" id="<%= s._id %>5" name="rating" value="5" />
+                  <label for="<%= s._id %>5" title="Amazing">5 stars</label>
+                </fieldset>
+              </form>
+            <% } %> 
           </div>
         </div>
       </div>
