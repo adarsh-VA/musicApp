@@ -66,6 +66,10 @@ app.use('/',display);
 // user routes
 app.use('/user',auth);
 
+app.all('*',(req,res)=>{
+    res.render('error',{tl:"Error"});
+})
+
 app.listen(port,(e)=>{
     console.log('server started');
     if (e){
