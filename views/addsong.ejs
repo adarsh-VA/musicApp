@@ -5,7 +5,10 @@
 <div class="container">
   <h1 class="text-center">Add Song</h1>
   <hr>
-  <form action="/add-song" method="post" style="max-width: 30rem;" enctype="multipart/form-data">
+  <div class="alert alert-warning" role="alert">
+    Please Fill Artists Field first, Or Add your Artist First to Avoid form data loss!
+  </div>
+  <form action="/adding/add-song" method="post" style="max-width: 30rem;" enctype="multipart/form-data">
       <div class="mb-3">
         <label for="songname" class="form-label">Song Name</label>
         <input type="text" class="form-control" id="songname" name="name" required>
@@ -52,7 +55,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="/add-artist" method="post" enctype="multipart/form-data">
+          <form action="/adding/add-artist" method="post" enctype="multipart/form-data">
               <div class="mb-3">
                 <label for="artistname" class="form-label">Artist Name</label>
                 <input type="text" class="form-control" id="artistname"  name="name" required>

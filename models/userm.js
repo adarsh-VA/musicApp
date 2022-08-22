@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const plm = require('passport-local-mongoose');
 
 const userschema = new mongoose.Schema({
     email:{
@@ -9,4 +9,6 @@ const userschema = new mongoose.Schema({
     }
 });
 
-module.exports = mon.model('users',userschema);
+userschema.plugin(plm);
+
+module.exports = mongoose.model('users',userschema);
