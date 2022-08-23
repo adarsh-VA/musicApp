@@ -14,6 +14,7 @@
 - *EJS* - For embedding javascript in html
 - *Passport* - For Authentication & Authorization
 - *Multer* - For Image Upload
+- *Flash* - For notification or alert messages.
 
 ## Installation
 
@@ -39,4 +40,52 @@ connection open
 ## Adding Data
 
 - Now this is the time to create an artist or a song but you need to register first and then you can add songs or artists manually. 
-- If you don't want to add them manually then i have created a program which system will create 20 Users and 15 Artists for you. (Check out the Video) 
+- If you don't want to add them manually then i have created a program which system will create 20 Users and 15 Artists for you.
+- **Auto add Users** run the file called "userseeds.js" by the command `node userseeds.js` this will create 20 users with usernames `user1,user2,user3 ...user20` with password `123` for all users and don't stop the program until it shows the message like below.
+```
+connection open
+completed
+```
+- **Auto add Artists** run the file called "artistseeds.js" by the command `node artistseeds.js` this will create 15 random artists with image but "image field is optional" and don't stop the program until it shows the message like below.
+```
+connection open
+completed
+```
+## Demo
+
+- **Home Page** shows top 10 songs where user can rate song Note:"User can rate only if he is logged in".
+
+<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/home1.jpg" />
+
+---
+
+- **Top 10 Artists** they are rated based on their song ratings.
+
+<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/home2.jpg" />
+
+---
+
+- **All Songs Page** to display all the available Songs.
+
+<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/allsongs.jpg" />
+
+---
+
+- **All Artists Page** to display all the available Artists.
+
+<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/allartists.jpg" />
+
+---
+
+- **Login Page**
+
+<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/login.jpg" />
+
+---
+
+- **Register Page** 
+
+<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/register.jpg" />
+
+
+ 
