@@ -65,6 +65,18 @@ completed
 
 ---
 
+- **Add Song Page**
+
+<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/addsong.jpg" />
+
+---
+
+- **Add Artist Page**
+
+<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/addartist.jpg" />
+
+---
+
 - **All Songs Page** to display all the available Songs.
 
 <img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/allsongs.jpg" />
@@ -79,13 +91,22 @@ completed
 
 - **Login Page**
 
-<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/login.jpg" />
+<img alt="Logo" style="height:300px;" src="https://github.com/adarsh-VA/dotify/blob/main/demo/loginpage.jpg" />
 
 ---
 
 - **Register Page** 
 
-<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/register.jpg" />
+<img alt="Logo" style="height:300px;" src="https://github.com/adarsh-VA/dotify/blob/main/demo/registerpage.jpg" />
 
+---
 
- 
+- **Reset Rating** you can reset the rating by clicking the red Button shown below.
+  <p>Reset Button : <img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/reset.jpg" width="20" /></p>
+<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/stars.jpg" />
+
+---
+
+- **Delete Song** you can delete the song by clicking the red Button shown below.
+  <p>Delete Button : <img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/deleteb.jpg" width="20" /></p>
+<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/delete.jpg" />
