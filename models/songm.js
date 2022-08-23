@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
 const songschema = new mongoose.Schema({
-    name:String,
+    name:{
+        type:String,
+        index: { unique: true }
+    },
     dor:Date,
     image:String,
     artists:[{

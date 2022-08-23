@@ -8,7 +8,16 @@ const {isLoggedIn} = require('../middlewares');
 // multer
 const multer = require('multer');
 const {storage} = require('../middlewares');
-const upload = multer({ storage: storage })
+const upload = multer({ 
+    storage: storage,
+    fileFilter: (req, file, cb) => {
+        if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+          cb(null, true);
+        } else {
+          cb(null, false);
+        }
+    } 
+})
 
 router.get('/add-song',isLoggedIn,async(req,res)=>{
     const artists = await artistm.find({});
@@ -17,12 +26,22 @@ router.get('/add-song',isLoggedIn,async(req,res)=>{
 
 router.post('/add-song',upload.single('image'),async(req,res)=>{
     const {name,dor} = req.body;
+    if(!req.file){
+        req.flash('error','Invalid File type!!, only allowed(jpeg,jpg,png)');
+        return res.redirect('/adding/add-song');
+    }
     const s = new songm({name,dor,image:req.file.filename});
     s.author=String(req.user._id);
     for(let artistid of req.body.artists){
         s.artists.push(artistid);
     }
-    await s.save();
+    try{
+        await s.save();
+    }
+    catch(err){
+        req.flash('error',err.message);
+        return res.redirect('/adding/add-song');
+    }
     for(let artistid of req.body.artists){
         const a = await artistm.findById(artistid);
         a.songs.push(s._id);
