@@ -1,8 +1,8 @@
 <div align="center">
-   <h1>Dotify</h1>
+   <h1>Music App</h1>
 </div>
 
-**Dotify**  is a Website which allows users to add songs, add artists and users can Rate the songs. Most important this website's home page has ability to show top 10 songs and top 10 artists according to their ratings and Well developed with Full `CRUD` operations.
+**Music App**  is a Website which allows users to add songs, add artists and users can Rate the songs. Most important this website's home page has ability to show top 10 songs and top 10 artists according to their ratings and Well developed with Full `CRUD` operations.
 
 # Getting Started :
 
@@ -55,58 +55,58 @@ completed
 
 - **Home Page** shows top 10 songs where user can rate song Note:"User can rate only if he is logged in".
 
-<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/home1.jpg" />
+<img alt="Logo" src="https://github.com/adarsh-VA/musicApp/blob/main/demo/home1.jpg" />
 
 ---
 
 - **Top 10 Artists** they are rated based on their song ratings.
 
-<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/home2.jpg" />
+<img alt="Logo" src="https://github.com/adarsh-VA/musicApp/blob/main/demo/home2.jpg" />
 
 ---
 
 - **Add Song Page**
 
-<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/addsong.jpg" />
+<img alt="Logo" src="https://github.com/adarsh-VA/musicApp/blob/main/demo/addsong.jpg" />
 
 ---
 
 - **Add Artist Page**
 
-<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/addartist.jpg" />
+<img alt="Logo" src="https://github.com/adarsh-VA/musicApp/blob/main/demo/addartist.jpg" />
 
 ---
 
 - **All Songs Page** to display all the available Songs.
 
-<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/allsongs.jpg" />
+<img alt="Logo" src="https://github.com/adarsh-VA/musicApp/blob/main/demo/allsongs.jpg" />
 
 ---
 
 - **All Artists Page** to display all the available Artists.
 
-<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/allartists.jpg" />
+<img alt="Logo" src="https://github.com/adarsh-VA/musicApp/blob/main/demo/allartists.jpg" />
 
 ---
 
 - **Login Page**
 
-<img alt="Logo" style="height:300px;" src="https://github.com/adarsh-VA/dotify/blob/main/demo/loginpage.jpg" />
+<img alt="Logo" style="height:300px;" src="https://github.com/adarsh-VA/musicApp/blob/main/demo/loginpage.jpg" />
 
 ---
 
 - **Register Page** 
 
-<img alt="Logo" style="height:300px;" src="https://github.com/adarsh-VA/dotify/blob/main/demo/registerpage.jpg" />
+<img alt="Logo" style="height:300px;" src="https://github.com/adarsh-VA/musicApp/blob/main/demo/registerpage.jpg" />
 
 ---
 
 - **Reset Rating** you can reset the rating by clicking the red Button shown below.
-  <p>Reset Button : <img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/reset.jpg" width="20" /></p>
-<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/stars.jpg" />
+  <p>Reset Button : <img alt="Logo" src="https://github.com/adarsh-VA/musicApp/blob/main/demo/reset.jpg" width="20" /></p>
+<img alt="Logo" src="https://github.com/adarsh-VA/musicApp/blob/main/demo/stars.jpg" />
 
 ---
 
 - **Delete Song** you can delete the song by clicking the red Button shown below.
-  <p>Delete Button : <img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/deleteb.jpg" width="20" /></p>
-<img alt="Logo" src="https://github.com/adarsh-VA/dotify/blob/main/demo/delete.jpg" />
+  <p>Delete Button : <img alt="Logo" src="https://github.com/adarsh-VA/musicApp/blob/main/demo/deleteb.jpg" width="20" /></p>
+<img alt="Logo" src="https://github.com/adarsh-VA/musicApp/blob/main/demo/delete.jpg" />
